@@ -1,0 +1,369 @@
+{
+	"info": {
+		"_postman_id": "7114796e-3367-48bd-8e26-b245a00984e7",
+		"name": "The Postman Automation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19372858"
+	},
+	"item": [
+		{
+			"name": "the first request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Examples with Status code\r",
+							"pm.test(\"Status codename is string\", function () {\r",
+							"    pm.response.to.have.status('OK');\r",
+							"});\r",
+							"pm.test(\"Status cod name is string1\", function () {\r",
+							"    pm.response.to.have.status('OK');\r",
+							"});\r",
+							"pm.test('value', function () {\r",
+							"    pm.expect(pm.response.json()).to.be.a('object')\r",
+							"});\r",
+							"pm.test('response have body', function () {\r",
+							"pm.response.to.have.body()\r",
+							"});\r",
+							"pm.test('check status code 1xx', function () {\r",
+							"pm.response.to.be.info\r",
+							"});\r",
+							"pm.test('check status code 2xx', function () {\r",
+							"pm.response.to.be.success\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is not 400\", function () {\r",
+							"    pm.response.to.not.have.status(400);\r",
+							"});\r",
+							"pm.test('to.be.at.least', function () {\r",
+							"    pm.expect(pm.response.code).to.be.at.least(100)\r",
+							"});\r",
+							"pm.test('value', function () {\r",
+							"    pm.expect(pm.response.code).to.be.most(100)\r",
+							"});\r",
+							"pm.test('status code check with match', function () {\r",
+							"    pm.expect(pm.response.code).to.match(/^200/)\r",
+							"});\r",
+							"pm.test('CloseTo', function () {\r",
+							"    pm.expect(pm.response.code).to.be.closeTo(201,1)\r",
+							"});\r",
+							"pm.test('toBeFinite', function () {\r",
+							"    pm.expect(pm.response.code).to.be.finite\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"  pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"const assert = require('assert');\r",
+							"pm.test('test with assert', function() {\r",
+							"assert.deepStrictEqual(pm.response.code,'200')\r",
+							"});\r",
+							"pm.test('test with assert1', function() {\r",
+							"assert.equal(pm.response.code,'200')\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Jack",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "skiller555@gmail.ru",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "111",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://users.bugred.ru/tasks/rest/doRegister",
+					"protocol": "http",
+					"host": [
+						"users",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"tasks",
+						"rest",
+						"doRegister"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "the second request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check responseType\", function () {\r",
+							"    let jsonData = pm.response.json();\r",
+							"    console.log(jsonData);\r",
+							"    pm.expect(jsonData.type).to.eql('error');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Jack",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "skiller555@gmail.ru",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "111",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://users.bugred.ru/tasks/rest/doRegister?name=Jack&email=skiller555@gmail.ru&password=111222333",
+					"protocol": "http",
+					"host": [
+						"users",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"tasks",
+						"rest",
+						"doRegister"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Jack"
+						},
+						{
+							"key": "email",
+							"value": "skiller555@gmail.ru"
+						},
+						{
+							"key": "password",
+							"value": "111222333"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fullUserInformation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check email\", function () {\r",
+							"    pm.expect(pm.response.json().email).to.eql(\"skiller555@gmail.ru\")\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check password\", function () {\r",
+							"    pm.expect(pm.response.json().password).to.eql(\"62d6931e25a07c666dec2ab6283bfc373575c726213fa1c7a0ab7f1d22393a956427cc4183bf27f1c84912b5f75f8ba461d308c5ded9d32dd23aade7ff39ba4e\")\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"skiller555@gmail.ru\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://users.bugred.ru/tasks/rest/getuserfull",
+					"protocol": "http",
+					"host": [
+						"users",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"tasks",
+						"rest",
+						"getuserfull"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add comments to Jira",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check status code\", function() {\r",
+							"    pm.expect(pm.response.status).to.eql(\"Created\")\r",
+							"});\r",
+							"pm.test(\"Check status code OK \", function() {\r",
+							"    pm.expect(pm.response.status).to.eql(\"OK\")\r",
+							"});\r",
+							"console.log(pm.response.Headers);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "QYwSqLe4F0vA93kIq1H6D6CB",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "skiller58857@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"body\": {\r\n    \"type\": \"doc\",\r\n    \"version\": 1,\r\n    \"content\": [\r\n      {\r\n        \"type\": \"paragraph\",\r\n        \"content\": [\r\n          {\r\n            \"text\": \"comment\",\r\n            \"type\": \"text\"\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://testtts.atlassian.net/rest/api/3/issue/TES-1/comment",
+					"protocol": "https",
+					"host": [
+						"testtts",
+						"atlassian",
+						"net"
+					],
+					"path": [
+						"rest",
+						"api",
+						"3",
+						"issue",
+						"TES-1",
+						"comment"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "601622794L",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "skiller58857@gmail.com",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
